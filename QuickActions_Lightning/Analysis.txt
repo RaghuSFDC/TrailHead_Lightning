@@ -1,0 +1,29 @@
+Quick actions : Replacement to javascript buttons
+
+1. Created Case study & Test User custom objects
+2. Create a Lightning Quick Action in Case study custom object & add it to Case Study object layout under 'Salesforce Mobile and Lightning Experience Actions'
+[Quick Action ]
+
+How it Works
+------------
+1. Create one Case Study record
+2. Open the Quick action 'Create Test User'
+
+ $A.get("e.force:closeQuickAction").fire(); [Enabled the component actions]
+var toastEvent = $A.get("e.force:showToast"); [To show success messages]
+
+To Create Lightning Component
+------------------------------
+Here’s the code for the component called by this Lightning action.
+CreateUser.cmp — The Lightning component that you see when you open the action. It contains the UI implementation, which includes the text fields, buttons, action title, and so on.
+
+CreateUserController.js — The controller that listens to the component and any UI events that take place, such as the initial load, text input, and button clicks. Its function is to delegate these events to the helper class, CreateUserHelper.js.
+
+CreateUserHelper.js — The code that deals with all the business logic, such as validating the password and email fields, and communicating with the server-side Apex controller, which saves the data.
+
+SaveTestUser.apxc — A simple Apex controller that handles the request to create a test user.
+
+-----
+Imp: Logics
+1) Email validation & Password validation
+2) After the entering the first name, autopopulate the nickname field value [Events: keydown, updateOn]
